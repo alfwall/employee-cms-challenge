@@ -44,7 +44,17 @@ THEN I am prompted to select an employee to update and their new role and this i
 
 ## TODO
 - [x] Make this README
-- [ ] Starting position
+- [ ] SQL
+    - [ ] schema.sql 
+        - [ ] department (id INT PRIMARY KEY, name VARCHAR(30))
+        - [ ] role (id INT PRIMARY KEY, title VARCHAR(30), salary DECIMAL, department_id INT)
+        - [ ] employee (id INT PRIMARY KEY, first_name VARCHAR(30), last_name VARCHAR(30), role_id INT, manager_id INT)
+    - [ ] seeds.sql
+        - [ ] Make some dummy data
+    - [ ] queries.sql
+        - [ ] 
+
+- [ ] Inquirer
     - [ ] View All Departments, 
         - [ ] Display formatted table with dept_name and id
     - [ ] View All Roles, 
@@ -60,6 +70,17 @@ THEN I am prompted to select an employee to update and their new role and this i
     - [ ] and Update an Employee Role.
         - [ ] Select employee,
         - [ ] Select role
+
+- EXTRA CREDIT!
+    - [ ] Update employee managers!
+    - [ ] View employees _by manager_
+    - [ ] View employees _by department_
+    - [ ] DELETE:
+        - [ ] Departments
+        - [ ] Roles
+        - [ ] Employees
+    - [ ] Calculate the total utilized budget of a specific department (count employees, use roles to get salaries, totalled)
+
 - [ ] Video demo
     -  [ ] Record video demo
         - [ ] NO MORE THAN 2 MINUTES
