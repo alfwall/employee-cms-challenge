@@ -43,8 +43,23 @@ THEN I am prompted to select an employee to update and their new role and this i
 
 
 ## TODO
-- [ ] Make this README
-
+- [x] Make this README
+- [ ] Starting position
+    - [ ] View All Departments, 
+        - [ ] Display formatted table with dept_name and id
+    - [ ] View All Roles, 
+        - [ ] Display formatted table with job_title, role_id, department, and role_salary
+    - [ ] View All Employees, 
+        - [ ] Display formatted table with id, first_name, last_name, job_title, department, salary, and reporting manager
+    - [ ] Add a Department, 
+        - [ ] Enter a name
+    - [ ] Add a Role,
+        - [ ] Enter name, salary, and department to the database
+    - [ ] Add an Employee, 
+        - [ ] Enter first_name, last_name, role, manager (optional)
+    - [ ] and Update an Employee Role.
+        - [ ] Select employee,
+        - [ ] Select role
 - [ ] Video demo
     -  [ ] Record video demo
         - [ ] NO MORE THAN 2 MINUTES
