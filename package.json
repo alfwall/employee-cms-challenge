@@ -1,0 +1,14 @@
+{
+  "name": "employee-cms",
+  "version": "1.0.0",
+  "description": "Command-line app to manage an employee database with Node.js, Inquirer, and MySQL.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^8.2.4"
+  }
+}
