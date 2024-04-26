@@ -4,5 +4,4 @@ async function Init() {
     await mainMenu();
 }
 
-
 Init();
