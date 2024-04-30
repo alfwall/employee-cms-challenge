@@ -82,9 +82,29 @@ function ViewAllDepartments() {
 }
 
 async function AddDepartment() {
-    console.log("NOT IMPLEMENTED: Add Department");
-
-    MainPrompt();
+    const newDeptQuestion = [
+        {
+            name: "deptName",
+            message: "What is the new department called?",
+            type: "input",
+            validate: someName => {
+                if (someName) {
+                    return true;
+                }
+                return "Please enter a name.";
+            }
+        }
+    ];
+    inquirer.prompt(newDeptQuestion).then((answer) => {
+        connection.query(`insert into departments (name) values ('${answer.deptName}')`,
+            function (err, results) {
+                if (err) {
+                    throw err;
+                }
+                console.log(`Department "${answer.deptName}" added.`)
+                MainPrompt();
+            })
+    });
 }
 
 // select id, title, department_id, salary from roles
