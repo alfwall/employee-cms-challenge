@@ -18,38 +18,31 @@ const startQuestion = [
     }
 ];
 
-async function mainMenu(db) {
+async function MainPrompt(db) {
     inquirer.prompt(startQuestion)
         .then((answer) => {
             console.log(`Answer was ${answer.main_choice}`)
             switch (answer.main_choice) {
                 case "View All Employees":
-                    db.query("select id, first_name from employees;",
-                        function (err, results) {
-                            console.log(err ? err : results);
-                        });
+                    ViewAllEmployees(db);
                     break;
                 case "Add Employee":
-                    //console.log("insert into employees");
+                    AddAnEmployee(db);
                     break;
                 case "Update Employee Role":
-                    //console.log("update employee roles");
+                    UpdateARole(db);
                     break;
                 case "View All Roles":
-                    db.query("select id, title, department_id, salary from roles;", function (err, results) {
-                        console.log(err ? err : results);
-                    });
+                    ViewAllRoles(db);
                     break;
                 case "Add Role":
-                    //console.log("insert into roles");
+                    AddARole(db);
                     break;
                 case "View All Departments":
-                    db.query("select id, name from departments;", function (err, results) {
-                        console.log(err ? err : results);
-                    });
+                    ViewAllDepartments(db);
                     break;
                 case "Add Department":
-                    //console.log("insert into departments");
+                    AddDepartment(db);
                     break;
                 default:
                     throw new Error("Error when selecting main command!")
@@ -60,4 +53,76 @@ async function mainMenu(db) {
         });
 }
 
-module.exports = mainMenu;
+
+async function ViewAllDepartments(db) {
+    db.query("select id, name from departments;",
+        function (err, results) {
+            if (err) {
+                console.error(err);
+            }
+            else {
+                console.table({ results });
+            }
+        });
+    MainPrompt();
+}
+
+async function AddDepartment(db) {
+    console.log("NOT IMPLEMENTED: Add Department");
+
+    MainPrompt();
+}
+
+// select id, title, department_id, salary from roles
+
+async function ViewAllRoles(db) {
+    db.query("select * from roles;",
+        function (err, results) {
+            if (err) {
+                console.error(err);
+            }
+            else {
+                console.table({ results });
+            }
+        });
+
+    MainPrompt();
+}
+
+async function AddARole(db) {
+    console.log("NOT IMPLEMENTED: Add a Role")
+
+    MainPrompt();
+}
+
+async function UpdateARole(db) {
+    console.log("NOT IMPLEMENTED: Update a Role")
+
+    MainPrompt();
+}
+
+async function ViewAllEmployees(db) {
+    db.query("select * from employees;",
+        function (err, results) {
+            if (err) {
+                console.error(err);
+            }
+            else {
+                console.table(results);
+            }
+        });
+
+    MainPrompt();
+}
+
+async function AddAnEmployee(db) {
+    console.log("NOT IMPLEMENTED: AddAnEmployee")
+
+    MainPrompt();
+}
+
+
+
+
+
+module.exports = MainPrompt;
