@@ -4,10 +4,7 @@
 Command-line app to manage an employee database with Node.js, Inquirer, and MySQL.
 
 ## The Result
-[Click here for the video demo!](LINK_TO_GOOGLEDRIVE_HERE)
-
-## Credits
-- [npm inquirer](https://www.npmjs.com/package/inquirer)
+[Click here for the video demo!](https://drive.google.com/file/d/1kK6L46b1rQhFCdW82NNk3ylPrA-igTR5/view?usp=sharing)
 
 ## USER STORY
 AS A business owner,
@@ -42,6 +39,10 @@ WHEN I choose to update an employee role,
 THEN I am prompted to select an employee to update and their new role and this information is updated in the database.
 
 
+## Credits
+- [npm inquirer](https://www.npmjs.com/package/inquirer)
+
+
 ## TODO
 - [x] Make this README
 - [x] SQL
@@ -53,14 +54,14 @@ THEN I am prompted to select an employee to update and their new role and this i
         - [x] Make some dummy data
 
 - [ ] Inquirer
-    - [ ] View All Departments, 
-        - [ ] Display formatted table with dept_name and id
-    - [ ] View All Roles, 
-        - [ ] Display formatted table with job_title, role_id, department, and role_salary
-    - [ ] View All Employees, 
-        - [ ] Display formatted table with id, first_name, last_name, job_title, department, salary, and reporting manager
-    - [ ] Add a Department, 
-        - [ ] Enter a name
+    - [x] View All Departments, 
+        - [x] Display formatted table with dept_name and id
+    - [x] View All Roles, 
+        - [x] Display formatted table with job_title, role_id, department, and role_salary
+    - [x] View All Employees, 
+        - [x] Display formatted table with id, first_name, last_name, job_title, department, salary, and reporting manager
+    - [x] Add a Department, 
+        - [x] Enter a name
     - [ ] Add a Role,
         - [ ] Enter name, salary, and department to the database
     - [ ] Add an Employee, 
@@ -79,9 +80,9 @@ THEN I am prompted to select an employee to update and their new role and this i
         - [ ] Employees
     - [ ] Calculate the total utilized budget of a specific department (count employees, use roles to get salaries, totalled)
 
-- [ ] Video demo
-    -  [ ] Record video demo
-        - [ ] NO MORE THAN 2 MINUTES
+- [x] Video demo
+    -  [x] Record video demo
+        - [x] NO MORE THAN 2 MINUTES
         - [ ] Demonstrate ALL acceptance criteria being met
-        - [ ] Include link to recording in README
-        - [ ] Include link to recording in Submission
+        - [x] Include link to recording in README
+        - [x] Include link to recording in Submission

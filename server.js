@@ -81,7 +81,7 @@ function ViewAllDepartments() {
     MainPrompt();
 }
 
-async function AddDepartment() {
+function AddDepartment() {
     const newDeptQuestion = [
         {
             name: "deptName",
@@ -108,8 +108,7 @@ async function AddDepartment() {
 }
 
 // select id, title, department_id, salary from roles
-
-async function ViewAllRoles() {
+function ViewAllRoles() {
     connection.query("select * from roles;",
         function (err, results) {
             if (err) {
@@ -123,19 +122,95 @@ async function ViewAllRoles() {
     MainPrompt();
 }
 
-async function AddARole() {
-    console.log("NOT IMPLEMENTED: Add a Role")
+function AddARole() {
+    connection.query("select id, name from departments;",
+        function (err, departmentsThatExist) {
+            if (err) {
+                console.error(err);
+            }
+            else {
+                console.log("DEPARTMENTS THAT EXIST")
+                console.log(departmentsThatExist)
+                let depts;
+                let deptNames = Array.from(departmentsThatExist, (x) => `${x["name"]}`);
+                const questions = [
+                    {
+                        name: "name",
+                        type: "input",
+                        message: "What is the role called?",
+                        validate: (roleName) => {
+                            if (roleName.length == 0) {
+                                console.log("Empty string!")
+                                return false;
+                            }
+                            return true;
+                        }
+                    },
+                    {
+                        name: "salary",
+                        type: "number",
+                        message: "What is the salary?",
+                        validate: salary => {
+                            try {
+                                parseInt(salary);
+                                return true;
+                            }
+                            catch (Error) {
+                                return "Enter a number.";
+                            }
+                        }
+                    },
+                    {
+                        name: "chosenDepartment",
+                        type: "list",
+                        message: "What department is it in?",
+                        choices: deptNames
+                    }
+                ];
+                console.log("TIME TO ASK")
+                inquirer.prompt(questions)
+                    .then((answer) => {
+                        console.log(`ANSWER: ${JSON.stringify(answer)}`)
+                        let departmentID;
+                        for (let dept in departmentsThatExist) {
+                            console.log(`Is "${answer.chosenDepartment}" the same dept as "${dept["name"]}"?`)
+                            if (answer.chosenDepartment === dept["name"]) {
+                                departmentID = dept["id"];
+                                console.log(`Department was ${dept}, id #${departmentID}`)
+                                break;
+                            }
+                        }
+                        if (departmentID == null) {
+                            console.log(departmentsThatExist)
+                            console.log(`Chosen department was "${answer.chosenDepartment}"`)
+                            throw Error("didn't find the department :/")
+                        }
 
-    MainPrompt();
+                        connection.query(`insert into roles (title, salary, department_id) values ("${answer.name}", ${answer.salary}, ${departmentID})`,
+                            function (err) {
+                                if (err) {
+                                    throw err;
+                                }
+                                console.log(`Successfully added new role "${answer.name}".`)
+                                MainPrompt();
+                            });
+
+                    });
+
+            }
+
+        });
+
+
 }
 
-async function UpdateARole() {
+function UpdateARole() {
     console.log("NOT IMPLEMENTED: Update a Role")
 
     MainPrompt();
 }
 
-async function ViewAllEmployees() {
+function ViewAllEmployees() {
     connection.query("select * from employees;",
         function (err, results) {
             if (err) {
@@ -149,7 +224,7 @@ async function ViewAllEmployees() {
     MainPrompt();
 }
 
-async function AddAnEmployee() {
+function AddAnEmployee() {
     console.log("NOT IMPLEMENTED: AddAnEmployee")
 
     MainPrompt();
